@@ -2,6 +2,7 @@ version: "3.8"
 services:
   database:
     image: mysql:latest
+    build: ./database
     container_name: mysql
     ports:
     - target: 3306
