@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  database:
+    image: mysql:latest
+    container_name: database
+    ports:
+    - target: 3306
+      published: 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PW}
+    volumes:
+    - type: volume
+      target: /var/lib/mysql
+  backend:
+    image: backend:latest
+    build: ./backend
+    ports:
+    - target: 5001
+      published: 5001
+  frontend:
+    image: frontend:latest
+    build: ./frontend
+    ports:
+    - target: 5000
+      published: 5000
+  nginx:
+    image: nginx:latest
+    ports:
+    - target: 80
+      published: 80
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+
+
