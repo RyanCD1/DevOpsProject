@@ -2,7 +2,7 @@ version: "3.8"
 services:
   database:
     image: mysql:latest
-    container_name: database
+    container_name: mysql
     ports:
     - target: 3306
       published: 3306
@@ -12,19 +12,20 @@ services:
     - type: volume
       target: /var/lib/mysql
   backend:
-    image: backend:latest
+    container_name: backend
     build: ./backend
     ports:
     - target: 5001
       published: 5001
   frontend:
-    image: frontend:latest
+    container_name: frontend
     build: ./frontend
     ports:
     - target: 5000
       published: 5000
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
     - target: 80
       published: 80
