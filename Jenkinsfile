@@ -33,12 +33,14 @@ pipeline {
 	}
 	stage ('Push') {
 	    steps {
-		sh 'docker-compose push'
+		docker.withRegistry('https://registry.hub.docker.com', 'DockerHub Account') {
+		    image.push("latest")
+		}
 	    }
 	}
 	stage ('Deploy') {
 	    steps {
-		sh 'docker stack deploy --compose-file docker-compose.yaml DevOpsProject'
+		sh 'docker stack deploy --compose-file docker-compose.yaml project-stack'
 	    }
 	}
     }
