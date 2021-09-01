@@ -12,16 +12,16 @@ pipeline {
     }
 	stage ('Testing') {
 	    steps {
-		sudo apt-get update
-		sudo apt-get install python3-venv python3-pip -y
-		cd frontend
-		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
-		cd ..
-		cd backend
-		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
-		cd ..
+		sh 'sudo apt-get update'
+		sh 'sudo apt-get install python3-venv python3-pip -y'
+		sh 'd frontend'
+		sh 'pip3 install -r requirements.txt'
+		sh 'python3 -m pytest --cov application'
+		sh 'cd ..'
+		sh 'cd backend'
+		sh 'pip3 install -r requirements.txt'
+		sh 'python3 -m pytest --cov application'
+		sh 'cd ..'
 	    }
 	}
 	stage ('Build') {
