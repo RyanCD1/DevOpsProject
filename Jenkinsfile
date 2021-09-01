@@ -29,7 +29,11 @@ pipeline {
 	}
 	stage ('Build') {
 	    steps {
-		sh 'docker-compose build'
+		script{
+                    if (env.rollback == 'false'){
+                        image = docker.build("[rdon11/DevOpsProject")
+                    }
+                }
 	    }
 	}
 	stage ('Push') {
@@ -37,7 +41,7 @@ pipeline {
 		script {
 		    if (env.rollback == 'false'){
                 	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
-                            app.push("latest")
+                            image.push("latest")
 		    }
 		}
 	    }
