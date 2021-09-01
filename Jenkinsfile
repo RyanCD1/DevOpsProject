@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-	DOCKER_USERNAME = credentials('DOCKER_USERNAME')
-	DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+	DOCKER_LOGIN = credentials('dockerhub_id')
 	install = 'true'
 	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
