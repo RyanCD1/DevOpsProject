@@ -21,14 +21,13 @@ pipeline {
 		sh 'sudo apt-get update'
 		sh 'sudo apt-get install python3-venv python3-pip -y'
 		sh 'pip3 install -r frontend/requirements.txt'
-		sh 'cd frontend/tests'
+		sh 'cd frontend'
+		sh 'ls'
 		sh 'python3 -m pytest --cov application'
-		sh 'cd ..'
 		sh 'cd ..'
 		sh 'pip3 install -r backend/requirements.txt'
-		sh 'cd backend/tests'
+		sh 'cd backend'
 		sh 'python3 -m pytest --cov application'
-		sh 'cd ..'
 		sh 'cd ..'
 	    }
 	}
