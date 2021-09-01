@@ -16,11 +16,11 @@ pipeline {
 		sudo apt-get install python3-venv python3-pip -y
 		cd frontend
 		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
+		python3 -m pytest --cov application
 		cd ..
 		cd backend
 		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
+		python3 -m pytest --cov application
 		cd ..
 	    }
 	}
