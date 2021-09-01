@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   database:
-    image: mysql:latest
+    image: rdon11/mysql:latest
     build: ./database
     container_name: mysql
     ports:
@@ -13,19 +13,21 @@ services:
     - type: volume
       target: /var/lib/mysql
   backend:
+    image: rdon11/backend:latest
     container_name: backend
     build: ./backend
     ports:
     - target: 5001
       published: 5001
   frontend:
+    image: rdon11/frontend:latest
     container_name: frontend
     build: ./frontend
     ports:
     - target: 5000
       published: 5000
   nginx:
-    image: nginx:latest
+    image: rdon11/nginx:latest
     container_name: nginx
     ports:
     - target: 80
@@ -34,5 +36,4 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
-
 
