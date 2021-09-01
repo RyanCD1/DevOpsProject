@@ -1,8 +1,10 @@
-FROM node:latest as node
-RUN mkdir -p /app
+WORKDIR /build
+COPY ./package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+FROM nginx:latest
 WORKDIR /app
-COPY package*.json /app/
-RUN npm install 
-COPY . /app/
-EXPOSE 4200
-CMD ["npm", "run", "start"]
+COPY --from=build /build/dist .
+COPY nginx.conf /etc/nginx/nginx.conf
+
