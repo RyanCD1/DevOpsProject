@@ -32,7 +32,6 @@ pipeline {
 		script{
                     if (env.rollback == 'false'){
                         image = docker.build("rdon11/project-frontend")
-oROM node:latest as node
                     }
                 }
 	    }
