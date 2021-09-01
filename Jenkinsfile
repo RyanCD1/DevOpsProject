@@ -1,4 +1,3 @@
-#!/bin/bash
 pipeline {
     agent any
     environment {
@@ -22,11 +21,11 @@ pipeline {
 		sh 'sudo apt-get update'
 		sh 'sudo apt-get install python3-venv python3-pip -y'
 		sh 'cd frontend'
-		sh 'pip3 install -r requirements.txt'
+		sh 'pip3 install -r frontend/requirements.txt'
 		sh 'python3 -m pytest --cov application'
 		sh 'cd ..'
 		sh 'cd backend'
-		sh 'pip3 install -r requirements.txt'
+		sh 'pip3 install -r backend/requirements.txt'
 		sh 'python3 -m pytest --cov application'
 		sh 'cd ..'
 	    }
