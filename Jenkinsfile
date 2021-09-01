@@ -12,7 +12,7 @@ pipeline {
 	    steps {
 		script {
 		    if (env.install== 'false'){
-			sh './installation-reqs.sh'
+			sh 'bash installation-reqs.sh'
 		}
 	    }
 	}
