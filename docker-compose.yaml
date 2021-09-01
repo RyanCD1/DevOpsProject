@@ -12,6 +12,8 @@ services:
     volumes:
     - type: volume
       target: /var/lib/mysql
+    deploy:
+      replicas: 3
   backend:
     image: rdon11/project-backend:latest
     container_name: backend
@@ -19,6 +21,8 @@ services:
     ports:
     - target: 5001
       published: 5001
+    deploy:
+      replicas: 3
   frontend:
     image: rdon11/project-frontend:latest
     container_name: frontend
@@ -26,9 +30,13 @@ services:
     ports:
     - target: 5000
       published: 5000
+    deploy:
+      replicas: 3
   nginx:
     image: nginx:latest
     container_name: nginx
+    deploy:
+      replicas: 3
     ports:
     - target: 80
       published: 80
