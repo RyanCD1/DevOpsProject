@@ -7,6 +7,7 @@
 #beginning Jenkins
 #jenkins progress, swarm begins
 #jenkins credentials credentialled
+#sudo messing 
 This application is a simple [Flask application](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application), ready to be deployed, for your SFIA2 project.
 
 The following information should be everything you need to complete the project.
