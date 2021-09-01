@@ -3,6 +3,7 @@ pipeline {
     environment {
 	DOCKER_LOGIN = credentials('dockerhub_id')
 	install = 'true'
+	rollback = 'false'
 	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -33,11 +34,15 @@ pipeline {
 	}
 	stage ('Push') {
 	    steps {
-		docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-		    image.push("latest")
+		script {
+		    if (env.rollback == 'false'){
+                	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
+                            image.push("${env.app_version}")
+		    }
 		}
 	    }
 	}
+    }
 	stage ('Deploy') {
 	    steps {
 		sh 'docker stack deploy --compose-file docker-compose.yaml project-stack'
