@@ -7,7 +7,7 @@ pipeline {
     stages {
 	stage ('Install Requirements') {
 	    steps {
-		sh 'bash installation-reqs.sh'
+		sh './installation-reqs.sh'
 	    }
     }
 	stage ('Testing') {
