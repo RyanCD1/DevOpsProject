@@ -31,7 +31,7 @@ pipeline {
 	    steps {
 		script{
                     if (env.rollback == 'false'){
-                        image = docker.build("[rdon11/DevOpsProject")
+                        image = docker.build("[rdon11/devopsproject")
                     }
                 }
 	    }
