@@ -33,7 +33,9 @@ pipeline {
 	}
 	stage ('Push') {
 	    steps {
-		sh 'docker-compose push'
+		docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
+		    image.push("latest")
+		}
 	    }
 	}
 	stage ('Deploy') {
