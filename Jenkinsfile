@@ -33,7 +33,7 @@ pipeline {
 	}
 	stage ('Push') {
 	    steps {
-		docker.withRegistry('https://registry.hub.docker.com', 'DockerHub Account') {
+		docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
 		    image.push("latest")
 		}
 	    }
