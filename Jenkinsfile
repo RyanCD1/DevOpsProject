@@ -1,14 +1,21 @@
 pipeline {
     agent any
     environment {
+	DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+	DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+	install = 'false'
 	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
     }
     stages {
 	stage ('Install Requirements') {
 	    steps {
-		sh './installation-reqs.sh'
+		script {
+		    if (env.install== 'false'){
+			sh './installation-reqs.sh'
+		}
 	    }
+	}
     }
 	stage ('Testing') {
 	    steps {
