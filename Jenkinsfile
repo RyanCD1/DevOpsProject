@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-	DOCKER_LOGIN = credentials('dockerhub_id')
+	DOCKER_LOGIN = credentials('DOCKER_LOGIN')
 	install = 'true'
 	rollback = 'false'
 	DATABASE_URI = credentials('DATABASE_URI')
@@ -36,7 +36,7 @@ pipeline {
 	
 	stage ('Push') {
 	    steps {
-		sh 'docker login -u rdon11 -p $(DOCKER_LOGIN) && docker-compose push'
+		sh 'docker login -u rdon11 -p ${DOCKER_LOGIN} && docker-compose push'
 		    }
 		}
 	    
