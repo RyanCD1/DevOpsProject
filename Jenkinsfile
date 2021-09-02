@@ -21,7 +21,7 @@ pipeline {
 	    steps {
 		sh 'sudo apt-get update'
 		sh 'sudo apt-get install python3-venv python3-pip -y'
-	:wqq	sh 'pip3 install -r frontend/requirements.txt'
+		sh 'pip3 install -r frontend/requirements.txt'
 		sh 'cd frontend && python3 -m pytest --cov application > frontend-test-report.xml'
 		sh 'pip3 install -r backend/requirements.txt'
 		sh 'cd backend && python3 -m pytest --cov application > backend-test-report.xml'
