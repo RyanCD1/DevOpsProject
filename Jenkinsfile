@@ -1,41 +1,55 @@
 pipeline {
+    agent any
     environment {
-	DATABASE_URI = Credentials('DATABASE_URI')
-	SECRET_KEY = Credentials('SECRET_KEY')
+	DOCKER_LOGIN = credentials('dockerhub_id')
+	install = 'true'
+	rollback = 'false'
+	DATABASE_URI = credentials('DATABASE_URI')
+	SECRET_KEY = credentials('SECRET_KEY')
     }
     stages {
 	stage ('Install Requirements') {
 	    steps {
-		sh 'bash installation-reqs.sh'
+		script {
+		    if (env.install== 'false'){
+			sh 'bash installation-reqs.sh'
+		}
 	    }
+	}
     }
 	stage ('Testing') {
 	    steps {
 		sh 'sudo apt-get update'
 		sh 'sudo apt-get install python3-venv python3-pip -y'
-		sh 'd frontend'
-		sh 'pip3 install -r requirements.txt'
-		sh 'python3 -m pytest --cov application'
-		sh 'cd ..'
-		sh 'cd backend'
-		sh 'pip3 install -r requirements.txt'
-		sh 'python3 -m pytest --cov application'
-		sh 'cd ..'
+		sh 'pip3 install -r frontend/requirements.txt'
+		sh 'cd frontend && python3 -m pytest --cov application'
+		sh 'pip3 install -r backend/requirements.txt'
+		sh 'cd backend && python3 -m pytest --cov application'
 	    }
 	}
 	stage ('Build') {
 	    steps {
-		sh 'docker-compose build'
+		script{
+                    if (env.rollback == 'false'){
+                        image = docker.build("rdon11/frontend")
+                    }
+                }
 	    }
 	}
 	stage ('Push') {
 	    steps {
-		sh 'docker-compose push'
+		script {
+		    if (env.rollback == 'false'){
+                	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
+                            image.push("latest")
+		    }
+		}
 	    }
 	}
+    }
 	stage ('Deploy') {
 	    steps {
-		sh 'docker stack deploy --compose-file docker-compose.yaml DevOpsProject'
+		sh 'docker stack deploy --compose-file docker-compose.yaml project-stack'
 	    }
 	}
     }
