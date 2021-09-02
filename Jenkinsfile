@@ -27,12 +27,6 @@ pipeline {
 		sh 'cd backend && python3 -m pytest --cov application > backend-test-report.xml'
 	    }
 	}
-
-	stage ('Build Artifacts') {
-	    steps {
-		archiveArtifacts artifacts: 'frontend/**/*.xml', fingerprint: true
-		}
-	}
 	
 	stage ('Build') {
 	    steps {
@@ -65,8 +59,7 @@ pipeline {
 
     post {
         always {
-	    archiveArtifacts artifacts: 'results.xml', fingerprint: true
-            junit 'build/reports/**/*.xml'
+	    archiveArtifacts artifacts: 'frontend/**/*.xml', fingerprint: true
         }
     }
 }
