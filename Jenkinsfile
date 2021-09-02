@@ -31,7 +31,8 @@ pipeline {
 	    steps {
 		script{
                     if (env.rollback == 'false'){
-                        image = docker.build("rdon11/frontend")
+                        frontimage = docker.build("rdon11/project-frontend")
+			backimage = docker.build("rdon11/project-backend")
                     }
                 }
 	    }
@@ -41,7 +42,8 @@ pipeline {
 		script {
 		    if (env.rollback == 'false'){
                 	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
-                            image.push("latest")
+                            frontimage.push("latest")
+			    backimage.push("latest")
 		    }
 		}
 	    }
