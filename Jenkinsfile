@@ -28,7 +28,7 @@ pipeline {
 	    }
 	}
 
-	stage (Build Artifacts) {
+	stage ('Build Artifacts') {
 	    steps {
 		archiveArtifacts artifacts: 'frontend/**/*.xml', fingerprint: true
 		}
