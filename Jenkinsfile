@@ -36,7 +36,7 @@ pipeline {
 	
 	stage ('Push') {
 	    steps {
-		sh 'docker login -u rdon11 -p ${DOCKER_LOGIN} && docker-compose push'
+		sh 'docker login -u rdon11 -p FDsCUqHui@*7SAp && docker-compose push'
 		    }
 		}
 	    
