@@ -1,42 +1,57 @@
 pipeline {
-    agent agent1
+    agent any
     environment {
-	DATABASE_URI = Credentials('DATABASE_URI')
-	SECRET_KEY = Credentials('SECRET_KEY')
+	DOCKER_LOGIN = credentials('dockerhub_id')
+	install = 'true'
+	rollback = 'false'
+	DATABASE_URI = credentials('DATABASE_URI')
+	SECRET_KEY = credentials('SECRET_KEY')
     }
     stages {
 	stage ('Install Requirements') {
 	    steps {
-		sh './installation-reqs.sh'
+		script {
+		    if (env.install== 'false'){
+			sh 'bash installation-reqs.sh'
+		}
 	    }
+	}
     }
 	stage ('Testing') {
 	    steps {
-		sudo apt-get update
-		sudo apt-get install python3-venv python3-pip -y
-		cd frontend
-		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
-		cd ..
-		cd backend
-		pip3 install -r requirements.txt
-		python3 -m pytest --cov=application
-		cd ..
+		sh 'sudo apt-get update'
+		sh 'sudo apt-get install python3-venv python3-pip -y'
+		sh 'pip3 install -r frontend/requirements.txt'
+		sh 'cd frontend && python3 -m pytest --cov application'
+		sh 'pip3 install -r backend/requirements.txt'
+		sh 'cd backend && python3 -m pytest --cov application'
 	    }
 	}
 	stage ('Build') {
 	    steps {
-		sh 'docker-compose build'
+		script{
+                    if (env.rollback == 'false'){
+                        frontimage = docker.build("rdon11/project-frontend")
+			backimage = docker.build("rdon11/project-backend")
+                    }
+                }
 	    }
 	}
 	stage ('Push') {
 	    steps {
-		sh 'docker-compose push'
+		script {
+		    if (env.rollback == 'false'){
+                	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
+                            frontimage.push("latest")
+			    backimage.push("latest")
+		    }
+		}
 	    }
 	}
+    }
 	stage ('Deploy') {
 	    steps {
-		sh 'docker stack deploy --compose-file docker-compose.yaml DevOpsProject'
+		sh 'docker stack deploy --compose-file docker-compose.yaml project-stack'
 	    }
 	}
     }
