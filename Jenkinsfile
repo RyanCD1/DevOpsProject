@@ -52,7 +52,7 @@ pipeline {
     }
 	stage ('Deploy') {
 	    steps {
-		sh 'docker-compose up -d --build'
+		sh 'docker stack deploy --compose-file docker-compose.yaml DevOpsProject'
 	    }
 	}
     }
