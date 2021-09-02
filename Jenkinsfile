@@ -30,26 +30,18 @@ pipeline {
 	
 	stage ('Build') {
 	    steps {
-		script{
-                    if (env.rollback == 'false'){
-                        frontimage = docker.build("rdon11/project-frontend")
-			backimage = docker.build("rdon11/project-backend")
-                    }
+		sh 'docker-compose build'
                 }
 	    }
-	}
+	
 	stage ('Push') {
 	    steps {
-		script {
-		    if (env.rollback == 'false'){
-                	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
-                            frontimage.push("latest")
-			    backimage.push("latest")
+		sh 'docker login -u rdon11 -p ${DOCKER_LOGIN} && docker-compose push'
 		    }
 		}
-	    }
-	}
-    }
+	    
+	
+    
 	stage ('Deploy') {
 	    steps {
 		sh 'docker stack deploy --compose-file docker-compose.yaml project-devops'

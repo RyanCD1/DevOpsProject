@@ -14,6 +14,8 @@ services:
     ports:
     - target: 5000
       published: 5000
+    depends_on:
+    - frontend 
   nginx:
     image: nginx:latest
     container_name: nginx
