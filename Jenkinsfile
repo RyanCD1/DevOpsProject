@@ -59,7 +59,7 @@ pipeline {
 
     post {
         always {
-	    archiveArtifacts artifacts: 'frontend/**/*.xml', fingerprint: true
+	    archiveArtifacts artifacts: 'frontend/**/*.xml', 'backend/**/*.xml', fingerprint: true
         }
     }
 }
