@@ -22,9 +22,9 @@ pipeline {
 		sh 'sudo apt-get update'
 		sh 'sudo apt-get install python3-venv python3-pip -y'
 		sh 'pip3 install -r frontend/requirements.txt'
-		sh 'cd frontend && python3 -m pytest --cov application'
+		sh 'cd frontend && python3 -m pytest --junitxml --cov application'
 		sh 'pip3 install -r backend/requirements.txt'
-		sh 'cd backend && python3 -m pytest --cov application'
+		sh 'cd backend && python3 -m pytest --junitxml --cov application'
 	    }
 	}
 	stage ('Build') {
@@ -58,6 +58,7 @@ pipeline {
 
     post {
         always {
+	    archiveArtifacts artifacts: 'build/libs/*/.jar', fingerprint: true
             junit 'build/reports/**/*.xml'
         }
     }
