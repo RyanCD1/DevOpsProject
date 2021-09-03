@@ -2,8 +2,8 @@
 
 ## Table of Content:
 1.	Resources
-  a.	PowerPoint
-  b.	Jira Board
+  a.  PowerPoint
+  b. 	Jira Board
   c.	Git Repository
 2.	Objectives and Scope
 3.	Planning
@@ -26,11 +26,11 @@ b.	Risk Assessment Revisited
 9.	Author and Acknowledgements
 
 ## Resources:
-PowerPoint: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1455&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=PowerPoint
-Jira: https://test-jira11.atlassian.net/jira/software/projects/QDP/boards/3
-Git: https://github.com/RyanCD1/DevOpsProject
-Initial Risk Assessment:https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1456&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=Word
-Revised Risk Assessment:https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1457&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=Word
+* PowerPoint: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1455&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=PowerPoint
+* Jira: https://test-jira11.atlassian.net/jira/software/projects/QDP/boards/3
+* Git: https://github.com/RyanCD1/DevOpsProject
+* Initial Risk Assessment:https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1456&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=Word
+* Revised Risk Assessment:https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1457&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=Word
 
 ## Objectives & Scope
 To successfully containerise and deploy a flask-application running in two micro-services (frontend and backend) with a managed RDS database server and a Continuous Integration (CI) pipeline that tests the application. A Jenkins webhook should be used so that every time new code is pushed to git the application is tested, built, and deployed again. The application must make use of a reverse-proxy server to make the application accessible to users.
