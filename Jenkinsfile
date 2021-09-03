@@ -1,11 +1,11 @@
 pipeline {
     agent any
     environment {
-	DOCKER_LOGIN = credentials('dockerhub_id')
+	DOCKER_LOGIN = credentials('DOCKER_LOGIN')
 	install = 'true'
 	rollback = 'false'
-	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
+ 	DB_DATA = credentials('DB_DATA')
     }
     stages {
 	stage ('Install Requirements') {
@@ -19,8 +19,7 @@ pipeline {
     }
 	stage ('Testing') {
 	    steps {
-		sh 'sudo apt-get update'
-		sh 'sudo apt-get install python3-venv python3-pip -y'
+		sh 'bash testingscript.sh'
 		sh 'pip3 install -r frontend/requirements.txt'
 		sh 'cd frontend && python3 -m pytest --cov application > frontend-test-report.xml'
 		sh 'pip3 install -r backend/requirements.txt'
@@ -30,36 +29,28 @@ pipeline {
 	
 	stage ('Build') {
 	    steps {
-		script{
-                    if (env.rollback == 'false'){
-                        frontimage = docker.build("rdon11/project-frontend")
-			backimage = docker.build("rdon11/project-backend")
-                    }
+		sh 'docker-compose build'
                 }
 	    }
-	}
+	
 	stage ('Push') {
 	    steps {
-		script {
-		    if (env.rollback == 'false'){
-                	docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id'){
-                            frontimage.push("latest")
-			    backimage.push("latest")
+		sh 'docker login -u rdon11 -p ${DOCKER_LOGIN} && docker-compose push'
 		    }
 		}
-	    }
-	}
-    }
+	    
+	
 	stage ('Deploy') {
 	    steps {
-		sh 'docker-compose up -d --build'
+		sh 'docker stack deploy --compose-file docker-compose.yaml project-devops'
 	    }
 	}
-    }
-
+  
+}
     post {
         always {
 	    archiveArtifacts artifacts: 'frontend/**/*.xml, backend/**/*.xml', fingerprint: true
         }
     }
 }
+
