@@ -1,29 +1,29 @@
 # DevOps Project – Eva and Ryan
 
 ## Table of Content:
-**1.	Resources
+**1.	Resources**
   * PowerPoint
   * Jira Board
   * Git Repository
-**2.	Objectives and Scope
-**3.	Planning
+**2.	Objectives and Scope**
+**3.	Planning**
   * Jira Board
   * AWS Digital Infrastructure Diagrams
   * Docker Structure
   * Risk Assessment
-**4.	Version Control Software: GitHub
-**5.	Containerisation
+**4.	Version Control Software: GitHub**
+**5.	Containerisation**
   * Docker
   * Docker-compose
   * Docker-swarm
-**6.	Jenkins
+**6.	Jenkins**
   * Webhook
   * CI Pipeline
-**7.	Testing: Unit testing
-**8.	Reflection
+**7.	Testing: Unit testing**
+**8.	Reflection**
 * Further work to be done/ stretch goals
 * Risk Assessment Revisited 
-**9.	Author and Acknowledgements
+**9.	Author and Acknowledgements**
 
 ## Resources:
 * PowerPoint: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1455&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=PowerPoint
