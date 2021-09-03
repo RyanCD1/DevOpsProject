@@ -1,17 +1,5 @@
 version: "3.8"
 services:
-  database:
-    image: rdon11/project-mysql:latest
-    build: ./database
-    container_name: mysql
-    ports:
-    - target: 3306
-      published: 3306
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-    volumes:
-    - type: volume
-      target: /var/lib/mysql
   backend:
     image: rdon11/project-backend:latest
     container_name: backend
@@ -19,6 +7,10 @@ services:
     ports:
     - target: 5001
       published: 5001
+    environment:
+      DATABASE_URI: ${DB_DATA}
+    deploy:
+      replicas: 3
   frontend:
     image: rdon11/project-frontend:latest
     container_name: frontend
@@ -26,6 +18,8 @@ services:
     ports:
     - target: 5000
       published: 5000
+    deploy:
+      replicas: 3 
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -36,4 +30,6 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
+    deploy:
+      replicas: 3
 
