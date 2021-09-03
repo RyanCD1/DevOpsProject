@@ -2,27 +2,40 @@
 
 ## Table of Content:
 **1.	Resources**
+
   * PowerPoint
   * Jira Board
   * Git Repository
+  
 **2.	Objectives and Scope**
+
 **3.	Planning**
+
   * Jira Board
   * AWS Digital Infrastructure Diagrams
   * Docker Structure
   * Risk Assessment
+  
 **4.	Version Control Software: GitHub**
+
 **5.	Containerisation**
+
   * Docker
   * Docker-compose
   * Docker-swarm
+  
 **6.	Jenkins**
+
   * Webhook
   * CI Pipeline
+  
 **7.	Testing: Unit testing**
+
 **8.	Reflection**
+
 * Further work to be done/ stretch goals
 * Risk Assessment Revisited 
+
 **9.	Author and Acknowledgements**
 
 ## Resources:
