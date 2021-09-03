@@ -68,7 +68,7 @@ The Jira board was used for initial planning and work distribution and then cont
 #### VPC, Subnets, and Security Groups
 A VPC was set up through AWS with separate security groups for the manager and worker nodes, as well as the RDS database. The Manager and Worker nodes allow port access within the VPC security group, port 8080 general access to Jenkins (but with login protection via password and username) and general HTTP requests from anywhere. The Database security allows traffic only from within the VPC security groups on port 3306. 
  
-![image](https://user-images.githubusercontent.com/86105248/132007120-c7aa5de7-db40-429a-af10-591a61017cd3.png)
+![image](https://user-images.githubusercontent.com/86298693/132016868-e74ac59d-b655-46d5-9dcb-47eb46ba6d61.png)
 
 Digital Infrastructure Diagrams:
 As part of the planning process, we made changes to reflect conflicts and difficulties in setups and a desire to increase security through use of the managed database server on a private subnet. This layout structure evolved into the final product:
