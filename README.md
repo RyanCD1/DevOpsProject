@@ -91,6 +91,10 @@ Link: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E
 GitHub link: https://github.com/RyanCD1/DevOpsProject
 We used Git for version control and connected our Git repository to Jira, to link our development process to the tasks we were working through, and to Jenkins to set up a Webhook that Jenkins builds, tests and deploys any changes made in the code base.
 
+Network Diagram:
+
+![image](https://user-images.githubusercontent.com/86105248/132013446-fa94d06a-011f-4a37-91fa-05ce6e145199.png)
+
 ## Containerisation
 ### Docker
 Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package. These are defined inside Dockerfiles. The application was initially built in basic docker in order to build familiarity and learn how the different parts inter-connected. Once this was running, the application was moved to Docker-compose, and then on to Docker Swarm. This allowed the containerisation and image building of the application to happen manually at first, before moving onto automatic deployment. This was found to be beneficial, as it allowed intimate control of the builds while in the testing phase. 
