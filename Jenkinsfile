@@ -19,8 +19,7 @@ pipeline {
     }
 	stage ('Testing') {
 	    steps {
-		sh 'sudo apt-get update'
-		sh 'sudo apt-get install python3-venv python3-pip -y'
+		sh 'bash testingscript.sh'
 		sh 'pip3 install -r frontend/requirements.txt'
 		sh 'cd frontend && python3 -m pytest --cov application > frontend-test-report.xml'
 		sh 'pip3 install -r backend/requirements.txt'
