@@ -6,7 +6,7 @@ pipeline {
 	rollback = 'false'
 	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
- 	DB_DATA = credential('DB_DATA')
+ 	DB_DATA = credentials('DB_DATA')
     }
     stages {
 	stage ('Install Requirements') {
