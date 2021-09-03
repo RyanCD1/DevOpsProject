@@ -4,7 +4,6 @@ pipeline {
 	DOCKER_LOGIN = credentials('DOCKER_LOGIN')
 	install = 'true'
 	rollback = 'false'
-	DATABASE_URI = credentials('DATABASE_URI')
 	SECRET_KEY = credentials('SECRET_KEY')
  	DB_DATA = credentials('DB_DATA')
     }
