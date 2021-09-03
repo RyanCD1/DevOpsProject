@@ -2,23 +2,23 @@
 
 ## Table of Content:
 1.	Resources
-  a.  PowerPoint
-  b. 	Jira Board
-  c.	Git Repository
+  * PowerPoint
+  * Jira Board
+  * Git Repository
 2.	Objectives and Scope
 3.	Planning
-  a.	Jira Board
-  b.	AWS Digital Infrastructure Diagrams
-  c.	Docker Structure
-  d.	Risk Assessment
+  * Jira Board
+  * AWS Digital Infrastructure Diagrams
+  * Docker Structure
+  * Risk Assessment
 4.	Version Control Software: GitHub
 5.	Containerisation
-  a.	Docker
-  b.	Docker-compose
-  c.	Docker-swarm
+  * Docker
+  * Docker-compose
+  * Docker-swarm
 6.	Jenkins
-  a.	Webhook
-  b.	CI Pipeline
+  * Webhook
+  * CI Pipeline
 7.	Testing: Unit testing
 8.	Reflection
 a.	Further work to be done/ stretch goals
@@ -134,7 +134,7 @@ We updated our risk assessment matrix as we progressed throughout the project an
 
 Link: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1457&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=Word
 
-###Further work to be done/ stretch goals
+### Further work to be done/ stretch goals
 1.	Add another manager node to improve reliability and safeguard against errors with a single manger bringing the application down
 2.	Extend knowledge into extra tools – Kubernetes, Terraform, Ansible
 ## Author and Acknowledgements
