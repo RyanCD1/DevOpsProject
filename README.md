@@ -128,6 +128,10 @@ Image of the Jenkinsfile:
  
 ![image](https://user-images.githubusercontent.com/86105248/132007519-fbf0f465-fae1-4f5b-a583-d37656a02720.png)
 
+The entire continuous integration pipeline:
+
+![image](https://user-images.githubusercontent.com/86105248/132105766-62353deb-1fa6-4692-9795-8b74d43d3112.png)
+
 ## Testing: Unit testing
 The testing can be run manually for 100% coverage for both the frontend and backend:
 This same testing process is integrated into the Jenkinsfile and Webhook deployment process to test every new build of the application and produce coverage reports that are displayed as an artefact of the build:
