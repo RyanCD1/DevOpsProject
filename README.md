@@ -16,27 +16,29 @@
   * Docker Structure
   * Risk Assessment
   
-**4.	Version Control Software: GitHub**
+**4. Installation Steps**
+  
+**5.	Version Control Software: GitHub**
 
-**5.	Containerisation**
+**6.	Containerisation**
 
   * Docker
   * Docker-compose
   * Docker-swarm
   
-**6.	Jenkins**
+**7.	Jenkins**
 
   * Webhook
   * CI Pipeline
   
-**7.	Testing: Unit testing**
+**8.	Testing: Unit testing**
 
-**8.	Reflection**
+**9.	Reflection**
 
 * Further work to be done/ stretch goals
 * Risk Assessment Revisited 
 
-**9.	Author and Acknowledgements**
+**10.	Author and Acknowledgements**
 
 ## Resources:
 * PowerPoint: https://onedrive.live.com/view.aspx?cid=e3950bf5a5bb0c26&page=view&resid=E3950BF5A5BB0C26!1455&parId=E3950BF5A5BB0C26!106&authkey=!ANl1upi6MXPhpbk&app=PowerPoint
@@ -63,6 +65,11 @@ For these issues we used smart commits to keep track of our progress:
 ![image](https://user-images.githubusercontent.com/86105248/132007098-c9751df9-d4e0-4450-9cd7-fb71ff3a3c6d.png)
  
 The Jira board was used for initial planning and work distribution and then continually updated throughout the project to reflect progress and keep track of development.
+
+## Installation Steps
+Running and updating this application requires the use of Docker, Docker Compose, Pytest, Jenkins, and must run within the created Jenkins user. To accomodate these requirements, new developers to the app must download these processes and be running the correct users. To facilitate this, installation files were created to speed up the installation process, as well as safeguard against any possibility of having to recreate an instance to run off of. 
+
+To set up these files, run `./installation-reqs.sh` and `./jenkinsinstall.sh` once the instance has been connected to.
 
 ### AWS Structure
 #### VPC, Subnets, and Security Groups
