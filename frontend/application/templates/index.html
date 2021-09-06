@@ -1,7 +1,6 @@
 {% block body_content %}
-    <h1>Home Page</h1>
+    <h1 style="background-color:powderblue;">Home Page</h1>
     <p>Here are our users:</p>
-    <p>Testing 123</p>
     <form action="/" method="get">
         {% for user in response %}
         <p>{{ user["userName"] }}</p>
