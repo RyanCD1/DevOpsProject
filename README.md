@@ -1,6 +1,5 @@
 # DevOps Project – Eva and Ryan
 
-testing
 
 ## Table of Content:
 **1.	Resources**
